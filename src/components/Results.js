@@ -12,7 +12,7 @@ const Results = ({ favoriteGif, totalgiphy, startOver, authenticated }) => {
     })
     .reduce((a, b) => a + b, 0);
 
-  const totalGiphyWierdness = Math.round(totalGiphyWiderness / 4);
+  const totalGiphyWierdness = Math.round(totalGiphyWiderness / 5);
   let searchTermUsed = false;
   searchTermUsed =
     favoriteGif &&
@@ -48,7 +48,7 @@ const Results = ({ favoriteGif, totalgiphy, startOver, authenticated }) => {
           favoriteGif.length > 0 &&
           favoriteGif.map((data, index) => (
             <Col className="text-center" key={index} sm={3}>
-              <h4>{data.username}</h4>
+              <h4>{data.username ? data.username : 'No Name'}</h4>
               <Image
                 className="mb-3"
                 src={data.images.fixed_height_small.url}

@@ -170,7 +170,7 @@ class GifRoot extends Component {
   };
 
   addFavoriteGif = () => {
-    if (this.props.favoriteGif.length < 4) {
+    if (this.props.favoriteGif.length < 5) {
       this.props.setFavortieGif(...this.state.gifySearchDatafiltered);
       this.setState({
         // liked_disbled: true,
@@ -236,7 +236,7 @@ class GifRoot extends Component {
             {gifySearchDatafiltered &&
             gifySearchDatafiltered.length > 0 &&
             searchTermUssed === false &&
-            this.props.favoriteGif.length !== 4 ? (
+            this.props.favoriteGif.length !== 5 ? (
               gifySearchDatafiltered.map((searchGifdata, index) => (
                 <Loader
                   key={index}
@@ -295,12 +295,12 @@ class GifRoot extends Component {
             ) : (
               <Col className="py-5 bg-dark text-white text-center" sm={10}>
                 <h4>
-                  {this.props.favoriteGif.length === 4 &&
+                  {this.props.favoriteGif.length === 5 &&
                     "MAX FAVORITE GIF SELECTED"}
                   {searchTermUssed === true &&
-                    this.props.favoriteGif.length !== 4 &&
+                    this.props.favoriteGif.length !== 5 &&
                     "GIF FOR SEARCH TERM ALREADY SELECTED"}
-                  {this.props.favoriteGif.length !== 4 &&
+                  {this.props.favoriteGif.length !== 5 &&
                     searchTermUssed === false &&
                     "NO GIF FOUND"}
                 </h4>

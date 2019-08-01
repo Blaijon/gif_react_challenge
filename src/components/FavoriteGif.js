@@ -23,6 +23,7 @@ const FavoriteGif = ({
       <Row>
         {favoriteGif && favoriteGif.length > 0 ? (
           favoriteGif.map((data, index) => (
+            <Col className="text-center" sm={6}>
             <Loader
               key={index}
               show={loader_favorite}
@@ -30,7 +31,7 @@ const FavoriteGif = ({
               foregroundStyle={{ color: "white" }}
               backgroundStyle={{ backgroundColor: "black" }}
             >
-              <Col className="text-center" key={index} sm={6}>
+              <Col className="text-center" sm={6}>
                 <p className="text-right">
                   <Button
                     className="rounded-circle"
@@ -44,7 +45,7 @@ const FavoriteGif = ({
                     <span>&times;</span>
                   </Button>
                 </p>
-                <h4>{data.username}</h4>
+                <h4>{data.username ? data.username : 'No Name' }</h4>
                 <Image
                   className="mb-3"
                   src={data.images.fixed_height.url}
@@ -53,6 +54,7 @@ const FavoriteGif = ({
                 />
               </Col>
             </Loader>
+            </Col>
           ))
         ) : (
           <Col className="mb-4 py-5 bg-dark text-white text-center" sm={11}>
@@ -64,11 +66,11 @@ const FavoriteGif = ({
           <Col className="text-center" sm={12}>
             <Link
               style={{
-                pointerEvents: favoriteGif.length !== 4 ? "none" : "unset"
+                pointerEvents: favoriteGif.length !== 5 ? "none" : "unset"
               }}
               to="/results"
               className={
-                favoriteGif.length === 4
+                favoriteGif.length === 5
                   ? "mb-4 btn btn-primary"
                   : "mb-4 btn btn-primary disabled"
               }
@@ -78,13 +80,13 @@ const FavoriteGif = ({
           </Col>
         }
 
-        {favoriteGif.length !== 4 ? (
+        {favoriteGif.length !== 5 ? (
           <Col className="text-center" sm={12}>
             <p>
               {" "}
               You Must Like{" "}
               <span className="font-weight-bold">
-                {4 - favoriteGif.length}
+                {5 - favoriteGif.length}
               </span>{" "}
               more GIF to calculate your score
             </p>

@@ -14,9 +14,6 @@ function SearchBox(props) {
             onChange={props.handleSearchChange}
             value={props.searchValue}
           />
-          <InputGroup.Append>
-            <Button variant="outline-secondary">Search</Button>
-          </InputGroup.Append>
         </InputGroup>
 
         {/* <input
