@@ -10,7 +10,7 @@ import { setFavortieGif, startOver } from "../actions/gif";
 import PropTypes from "prop-types";
 import Loader from "react-loader-advanced";
 
-class Landing extends Component {
+class GifRoot extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,8 @@ class Landing extends Component {
       .map((data, index) => ({
         ...data,
         searchTerm: this.state.searchValue,
-        weirdnessLevel: this.state.range_value
+        weirdnessLevel: this.state.range_value,
+        authenticated: true
       }));
     this.setState({
       range_value: value,
@@ -132,7 +133,8 @@ class Landing extends Component {
             .map((data, index) => ({
               ...data,
               searchTerm: this.state.searchValue,
-              weirdnessLevel: this.state.range_value
+              weirdnessLevel: this.state.range_value,
+              authenticated: true
             }));
 
         this.setState({
@@ -326,7 +328,7 @@ class Landing extends Component {
     );
   }
 }
-Landing.propTypes = {
+GifRoot.propTypes = {
   setFavortieGif: PropTypes.func.isRequired,
   favoriteGif: PropTypes.array.isRequired
 };
@@ -338,4 +340,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { setFavortieGif, startOver }
-)(Landing);
+)(GifRoot);

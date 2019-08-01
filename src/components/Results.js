@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Col, Row, Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { startOver } from "../actions/gif";
 import PropTypes from "prop-types";
 
-const Results = ({ favoriteGif, totalgiphy, startOver }) => {
+const Results = ({ favoriteGif, totalgiphy, startOver, authenticated }) => {
   const totalGiphyWiderness = favoriteGif
     .map((data, index) => {
       return data.weirdnessLevel;
@@ -13,6 +13,16 @@ const Results = ({ favoriteGif, totalgiphy, startOver }) => {
     .reduce((a, b) => a + b, 0);
 
   const totalGiphyWierdness = Math.round(totalGiphyWiderness / 4);
+  let searchTermUsed = false;
+  searchTermUsed =
+    favoriteGif &&
+    favoriteGif.some((data, index) => {
+      return data.authenticated === true;
+    });
+
+  if (searchTermUsed === false) {
+    return <Redirect to="/" />;
+  }
   return (
     <Col sm={12}>
       <Row>
