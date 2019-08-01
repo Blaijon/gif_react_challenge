@@ -1,0 +1,3 @@
+export const SET_FAVORITE_GIF = "SET_FAVORITE_GIF";
+export const REMOVE_FAVORITE_GIF = "REMOVE_FAVORITE_GIF";
+export const START_OVER = "START_OVER";
